@@ -1,11 +1,3 @@
-<!--
- * @Author: Quinn
- * @Date: 2021-04-16 14:45:48
- * @LastEditTime: 2021-04-16 15:02:23
- * @LastEditors: quinn
- * @Description:  
--->
-
 # quinn-insert-webpack-plugin
 
 ### 1、简介（Introduction）
@@ -47,16 +39,21 @@ npm i quinn-insert-webpack-plugin --save-dev
 ``` js
 const QuinnInsertWebpackPlugin = require('quinn-insert-webpack-plugin');
 
-new QuinnInsertWebpackPlugin({
-    // dist 文件路径
-    assetsPath: 'system.html',
-    jsList: [{
-        type: 'async',
-        src: 'https://www.cnd.com/SJL9D66HYGW.js'
-    }, {
-        content: `console.log("This is quinn-insert-webpack-plugin");`
-    }]
-}),
+plugins: [
+    new HtmlWebpackPlugin({
+        // ....
+    }),
+    new QuinnInsertWebpackPlugin({
+        // dist 文件路径
+        assetsPath: 'system.html',
+        jsList: [{
+            type: 'async',
+            src: 'https://www.cnd.com/SJL9D66HYGW.js'
+        }, {
+            content: `console.log("This is quinn-insert-webpack-plugin");`
+        }]
+    }),
+]
 ```
 
 插入后的伪代码：
@@ -78,4 +75,18 @@ new QuinnInsertWebpackPlugin({
 </body>
 
 </html>
+```
+
+### 5、注意点（Warnings）
+
+``` js
+plugins: [
+    new HtmlWebpackPlugin({
+        // ....
+    }),
+    new QuinnInsertWebpackPlugin({
+        // 必须在HtmlWebpackPlugin使用该插件，只有当html插件执行完后，才能读取输出内容里的目标html
+        // ....
+    })
+]
 ```
