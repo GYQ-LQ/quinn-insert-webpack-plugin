@@ -1,8 +1,8 @@
 {
   "name": "quinn-insert-webpack-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Quinn的webpack插件，用于插入js等到html",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "test"
   },
