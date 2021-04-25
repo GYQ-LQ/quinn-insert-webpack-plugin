@@ -21,6 +21,10 @@ npm i quinn-insert-webpack-plugin --save-dev
     // dist 模块路径
     assetsPath: 'index.html',
     jsList: [{
+        // 插入的节点位置 默认'</body>'
+        node: '</body>'
+        // 要插入在节点位置的前面还是后面，默认'before'，可选值'before'、'after'
+        side: 'before',
         // 可取值：defer/async
         type: '',
         // script的src属性
